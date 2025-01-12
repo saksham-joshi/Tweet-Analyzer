@@ -1,0 +1,12 @@
+{
+    "brands-list" : [
+        "apple",
+        "microsoft",
+        "boat",
+        "google",
+        "openai"
+    ] ,
+    "refresh-time" : 5,
+    "no-of-tweets-to-extract" : 5,
+    "filter-retweets" : true
+}
