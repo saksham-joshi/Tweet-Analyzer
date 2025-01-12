@@ -1,29 +1,25 @@
 # Tweet-Analyzer
+#### An optimized and user friendly model to analyze sentiment of tweets made for the brands by the users of X (Twitter).
 
 > **PROBLEM STATEMENT:**\
   Develop a real-time sentiment analysis pipeline to classify tweets (positive, negative, neutral) about a specific brand, supporting enhanced brand sentiment monitoring.
 
 ---
 ## Run this project
-1. Download python3 from [here](https://www.python.org/downloads).
-2. Install python on your system.
-3. Run **'setup.py'** by below given command.
-```bash
-python setup.py
-```
-If setup.py executed succesfully, it will display a "setup done perfectly" message on the terminal.
+**1.** Download python3 from [here](https://www.python.org/downloads).
+    
+**2.** Install it on your system.
+    
+**3.** Run **'setup.py'** by this command ```python setup.py```. If setup.py executed succesfully, it will display a **"setup done perfectly"** message on the terminal.
 
-4. If setup.py is successful, execute the below command:
+**4.** If setup.py is successful, execute the below command on the terminal:
 ```bash
 streamlit run app.py
 ```
-5. Now open your browser and type the given URL to view your data
-```bash
-localhost:8501
-```
+**5.** Now open your browser and access this link <a href="localhost:8501">localhost:8501</a>.
 
 ---
-## File Structure
+## 🗄**File Structure**
 ```
 --Tweet-Analyzer
     |
@@ -62,7 +58,7 @@ localhost:8501
 ```
 
 ---
-## **Coding Convention**
+## 📝**Coding Convention**
 - **Folder names** : ```Capitalised separated by underscore.```
 - **File names** : ```lowercase separated by underscore.```
 - **Classes/types** : ```PascalCase.```
