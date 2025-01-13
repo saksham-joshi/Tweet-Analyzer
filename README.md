@@ -1,5 +1,5 @@
 > # THIS REPO IS UNDER DEVELOPMENT, IT DOESN'T WORK
-> ## I have no make it public due to some reasons
+> ## I have to make it public due to some reasons
 
 # Tweet-Analyzer
 #### A Real time, optimized and user friendly model to analyze sentiment of tweets made for the brands by the users of X (Twitter).
