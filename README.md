@@ -1,5 +1,9 @@
 # Tweet-Analyzer
-#### An optimized and user friendly model to analyze sentiment of tweets made for the brands by the users of X (Twitter).
+#### A Real time, optimized and user friendly model to analyze sentiment of tweets made for the brands by the users of X (Twitter).
+
+<div align="center">
+    <img width="300" src="icon.png" alt="Logo" >
+</div>
 
 > **PROBLEM STATEMENT:**\
   Develop a real-time sentiment analysis pipeline to classify tweets (positive, negative, neutral) about a specific brand, supporting enhanced brand sentiment monitoring.
