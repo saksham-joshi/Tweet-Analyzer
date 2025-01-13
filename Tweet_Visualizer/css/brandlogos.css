@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/css/fonts/icomoon.eot?v64pgc');
+  src:  url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/css/fonts/icomoon.eot?v64pgc#iefix') format('embedded-opentype'),
+        url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/css/fonts/icomoon.ttf?v64pgc') format('truetype'),
+        url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/css/fonts/icomoon.woff?v64pgc') format('woff'),
+        url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/css/fonts/icomoon.svg?v64pgc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-amazon-circle:before {
+  content: "\e900";
+}
+.icon-apple:before {
+  content: "\e901";
+}
+.icon-google-logo:before {
+  content: "\e902";
+}
+.icon-meta-line-logo:before {
+  content: "\e903";
+  color: #09244b;
+}
+.icon-microsoft:before {
+  content: "\e904";
+}
+.icon-netflix:before {
+  content: "\e905";
+}
+.icon-nvidia:before {
+  content: "\e906";
+}
+.icon-tesla:before {
+  content: "\e907";
+}
