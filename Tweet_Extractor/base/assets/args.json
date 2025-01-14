@@ -1,12 +1,15 @@
 {
     "brands-list" : [
-        "apple",
-        "microsoft",
-        "boat",
-        "google",
-        "openai"
+        "Amazon",
+        "Apple",
+        "Google",
+        "Meta",
+        "Microsoft",
+        "Netflix",
+        "Nvidia",
+        "Tesla"
     ] ,
-    "refresh-time" : 5,
+    "refresh-time" : 15,
     "no-of-tweets-to-extract" : 5,
     "filter-retweets" : true
 }
