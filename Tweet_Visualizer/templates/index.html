@@ -53,8 +53,39 @@
 	<script async src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
 	<script async src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script async src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
+	<script>
 
+		function showErrorImage() {
+			document.querySelector('#bar-graph').innerHTML = `<img src='https://cdn.delivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/sorry_image.png' alt="Data Not Available!!">`
+		}
+		function updateGraph(__brand_name)
+		{
+			fetch(`/company/${__brand_name}`, {method : 'GET'})
+			               .then(response => {
+								if(!response.ok){
+									console.error("An unknown error occurred! Something wrong with the response!");
+									showErrorImage();
+								}
+								return response.json();
+						   } )
+						   .then(jsondata => {
+								if(jsondata["response_status"] === 200){
+									document.querySelector('#bar-graph').innerHTML = "";
+									Plotly.newPlot("bar-graph", jsondata['graph'], jsondata['graph']);
+								}
+								else{
+									showErrorImage();
+								}
+
+						   } )
+						   .catch(error => {
+							   console.error("An unknown error occurred : " + error)
+						       showErrorImage();
+							   
+						   } );
+		}
+	</script>
+</head>
 <body>
 	<section data-bs-version="5.1" class="menu menu2 cid-tJS6tZXiPa" once="menu" id="menu02-0">
 		<nav class="navbar navbar-dropdown navbar-expand-lg">
@@ -105,10 +136,8 @@
 				<div class="col-12 content-head">
 					<div class="mbr-section-head mb-5">
 						<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-							<div id="bar-graph"> {{graph_figure | safe}} </div>
+							<div id="bar-graph" class="js-plotly-plot"> {{graph_figure | safe}} </div>
 						</h4>
-						<h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7"><strong>Tweets
-								about <em id="brand-name">All&nbsp;</em>!</strong></h5>
 					</div>
 				</div>
 			</div>
@@ -118,14 +147,16 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-7">
-					<div class="mbr-section-btn align-center"><a class="btn btn-primary-outline display-4"
-							href="">Amazon</a> <a class="btn btn-primary-outline display-4" href="">Apple</a> <a
-							class="btn btn-primary-outline display-4" href="">Google</a> <a
-							class="btn btn-primary-outline display-4" href="">Meta</a> <a
-							class="btn btn-primary-outline display-4" href="">Microsoft</a> <a
-							class="btn btn-primary-outline display-4" href="">Netflix</a> <a
-							class="btn btn-primary-outline display-4" href="">Nvidia</a> <a
-							class="btn btn-primary-outline display-4" href="">Tesla</a></div>
+					<div class="mbr-section-btn align-center">
+						<button onclick="updateGraph('amazon')"    class="btn btn-primary-outline display-4" href="">Amazon</button> 
+						<button onclick="updateGraph('apple')"     class="btn btn-primary-outline display-4" href="">Apple</button>
+						<button onclick="updateGraph('google')"    class="btn btn-primary-outline display-4" href="">Google</button>
+						<button onclick="updateGraph('meta')"      class="btn btn-primary-outline display-4" href="">Meta</button>
+						<button onclick="updateGraph('microsoft')" class="btn btn-primary-outline display-4" href="">Microsoft</button>
+						<button onclick="updateGraph('netflix')"   class="btn btn-primary-outline display-4" href="">Netflix</button>
+						<button onclick="updateGraph('nvidia')"    class="btn btn-primary-outline display-4" href="">Nvidia</button>
+						<button onclick="updateGraph('tesla')"     class="btn btn-primary-outline display-4" href="">Tesla</button>
+					</div>
 				</div>
 			</div>
 		</div>
