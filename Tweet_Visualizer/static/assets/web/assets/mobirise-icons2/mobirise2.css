@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Moririse2';
   font-display: swap;
-  src:  url('mobirise2.eot?f2bix4');
-  src:  url('mobirise2.eot?f2bix4#iefix') format('embedded-opentype'),
-    url('mobirise2.ttf?f2bix4') format('truetype'),
-    url('mobirise2.woff?f2bix4') format('woff'),
-    url('mobirise2.svg?f2bix4#mobirise2') format('svg');
+  src:  url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons2/mobirise2.eot?f2bix4');
+  src:  url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons2/mobirise2.eot?f2bix4#iefix') format('embedded-opentype'),
+    url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons2/mobirise2.ttf?f2bix4') format('truetype'),
+    url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons2/mobirise2.woff?f2bix4') format('woff'),
+    url('https://raw.githubusercontent.com/saksham-joshi/Tweet-Analyzer/main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons2/mobirise2.svg?f2bix4#mobirise2') format('svg');
   font-weight: normal;
   font-style: normal;
 }
