@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'mobirise-icons-bold';
   font-display: swap;
-  src:  url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.eot?m1l4yr');
-  src:  url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.eot?m1l4yr#iefix') format('embedded-opentype'),
-    url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.ttf?m1l4yr') format('truetype'),
-    url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.woff?m1l4yr') format('woff'),
-    url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.svg?m1l4yr#mobirise-icons-bold') format('svg');
+  src:  url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.eot?m1l4yr');
+  src:  url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.eot?m1l4yr#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.ttf?m1l4yr') format('truetype'),
+        url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.woff?m1l4yr') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.svg?m1l4yr#mobirise-icons-bold') format('svg');
   font-weight: normal;
   font-style: normal;
 }
