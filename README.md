@@ -2,7 +2,7 @@
 #### A Real time, optimized and user friendly model to analyze sentiment of tweets made for the brands by the users of X (Twitter).
 
 <div align="center">
-    <img width="300" src="icon.png" alt="Logo" >
+    <img width="300" src="./Tweet_Visualizer/static/assets/rounded-corner-logo.png" alt="Logo" >
 </div>
 
 <br/>
@@ -20,9 +20,9 @@
 
 **4.** If setup.py is successful, execute the below command on the terminal:
 ```bash
-streamlit run app.py
+flask run --host 0.0.0.0
 ```
-**5.** Now open your browser and access this link <a href="localhost:8501">localhost:8501</a>.
+**5.** Now the terminal wil display a URL like this: ```Running on http://192.168.X.XXX:5000```, access that URL through your browser and access your website.
 
 ---
 ## 🗄**File Structure**
@@ -41,6 +41,7 @@ streamlit run app.py
     |     |     |-- auth_keys.py
     |     |     |-- import_lib.py
     |     |     |-- xexceptions.py
+    |     |
     |     |-- __init__.py
     |     |-- extractor.py
     |     |-- setup.py
@@ -52,7 +53,46 @@ streamlit run app.py
     |
     |-- Tweet_Visualizer
     |     |
+    |     |-- graph
+    |     |     |
+    |     |     |-- __init__.py
+    |     |     |-- generator.py
+    |     |
+    |     |-- html
+    |     |     |
+    |     |     |-- project.mobirise
+    |     |
+    |     |-- static
+    |     |     |
+    |     |     |-- assets
+    |     |     |     |
+    |     |     |     |-- animatecss
+    |     |     |     |-- bootstrap
+    |     |     |     |-- css
+    |     |     |     |-- dropdown
+    |     |     |     |-- font-awesome-solid
+    |     |     |     |-- images
+    |     |     |     |-- mobirise
+    |     |     |     |-- smoothscroll
+    |     |     |     |-- socicon
+    |     |     |     |-- theme
+    |     |     |     |-- web
+    |     |     |     |-- ytplayer
+    |     |     |     |-- circular-logo.png
+    |     |     |     |-- rounded-corner-logo.png
+    |     |     |     |-- square-logo.png
+    |     |     |
+    |     |     |-- img
+    |     |          |
+    |     |          |-- favicon.ico
+    |     |          |-- sorry_image.png
+    |     |     
+    |     |-- templates
+    |     |     |
+    |     |     |-- index.html
+    |     |
     |     |-- __init__.py
+    |
     | 
     |-- .gitattributes
     |-- .gitignore
