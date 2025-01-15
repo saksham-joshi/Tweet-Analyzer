@@ -30,6 +30,7 @@ flask run --host 0.0.0.0
 --Tweet-Analyzer
     |
     |-- Tweet_Extractor
+    |     |
     |     |-- base
     |     |     |
     |     |     |-- assets
@@ -93,7 +94,6 @@ flask run --host 0.0.0.0
     |     |
     |     |-- __init__.py
     |
-    | 
     |-- .gitattributes
     |-- .gitignore
     |-- app.py
