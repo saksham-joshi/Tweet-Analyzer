@@ -1,4 +1,4 @@
-from Tweet_Visualizer.graph.base import *
+from Tweet_Visualizer.graph.generator import *
 
 from plotly.utils import PlotlyJSONEncoder
 
