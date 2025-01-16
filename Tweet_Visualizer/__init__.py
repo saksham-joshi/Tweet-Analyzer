@@ -1,8 +1,7 @@
-from flask import Flask, render_template , Response , jsonify , url_for
+from flask import Flask, render_template ,  jsonify
 from flask_cors import CORS
 from flask_socketio import SocketIO
 from typing import Final
-from json import dumps
 from Tweet_Visualizer.graph import *
 
 TWEET_APP__ = Flask(__name__)
@@ -19,7 +18,10 @@ URL_TO_COMPANY_DATA_NOT_AVAILABLE_IMAGE : Final = "https://cdn.jsdelivr.net/gh/s
 @TWEET_APP__.route('/')
 def getIndexHtml() : 
     global TOTAL_WEBSITE_VISITORS__ , TOTAL_DATA_FETCHES__
+
     TOTAL_WEBSITE_VISITORS__ += 1
+    TOTAL_DATA_FETCHES__ +=1
+
     return render_template("index.html", total_website_visitors= TOTAL_WEBSITE_VISITORS__, total_data_fetches= TOTAL_DATA_FETCHES__, graph_figure= GRAPH_TOGETHER_OF_ALL_BRANDS__ )
 
 
@@ -40,7 +42,7 @@ def getGraphOfCompany(__company_name : str) :
 
     return jsonify({
         "response_status" : 200,
-        "graph" : Pio.to_json(graph_to_transmit.getBarGraph())
+        "graph" : graph_to_transmit.getBarGraph()
     })
 
 
