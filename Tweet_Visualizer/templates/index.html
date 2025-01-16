@@ -52,7 +52,7 @@
 		type="text/css">
 	<script async src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
 	<script async src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script async src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script async src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
 	<script>
 
 		function showErrorImage() {
@@ -60,28 +60,31 @@
 		}
 		function updateGraph(__brand_name)
 		{
+			var bar_graph_area = document.querySelector("#bar-graph");
+
+			bar_graph_area.innerHTML = `Fetching data for '${__brand_name}'...`;
+
 			fetch(`/company/${__brand_name}`, {method : 'GET'})
 			               .then(response => {
 								if(!response.ok){
 									console.error("An unknown error occurred! Something wrong with the response!");
-									showErrorImage();
+									bar_graph_area.innerHTML = `An unknown error occurred!\nSomething wrong with the response!`;
 								}
 								return response.json();
 						   } )
 						   .then(jsondata => {
 								if(jsondata["response_status"] === 200){
-									document.querySelector('#bar-graph').innerHTML = "";
-									Plotly.newPlot("bar-graph", jsondata['graph'], jsondata['graph']);
+									bar_graph_area.innerHTML = "";
+									jsondata = JSON.parse(jsondata["graph"]);
+									Plotly.newPlot("bar-graph", jsondata.data, jsondata.layout);
 								}
 								else{
-									showErrorImage();
+									bar_graph_area.innerHTML = "We do not provide data for\nthe company you requested!";
 								}
-
 						   } )
 						   .catch(error => {
 							   console.error("An unknown error occurred : " + error)
-						       showErrorImage();
-							   
+							   bar_graph_area.innerHTML = "An unknown error occurred :\n" + error;							   
 						   } );
 		}
 	</script>
