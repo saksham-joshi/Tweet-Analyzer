@@ -1,5 +1,5 @@
-import plotly.express as Px
-import plotly.io as Pio
+from plotly.express import bar
+from plotly.io import to_json , to_html
 
 class XGraph :
 
@@ -8,20 +8,17 @@ class XGraph :
         this._positive_tweets : int = __positive_tweet_count
         this._negative_tweets : int = __negative_tweet_count
         this._neutral_tweets : int = __neutral_tweet_count
-        this._graph_html = None
-        this._bar_graph = None
+        this._bar_graph_json = None
     
     def getBarGraph(this) :
-        if this._bar_graph is None :
-            this._bar_graph = Px.bar({
-                "Sentiments" : ["Positive" , "Neutral" , "Negative"],
-                "Count" : [this._positive_tweets , this._neutral_tweets , this._negative_tweets]}, 
-                x = "Sentiments" , y = "Count", title= f"Sentiment Analysis of tweets for '{this._brand}' in the last 7 days.")
-        return this._bar_graph
-
-    def getBarGraphHtmlised(this) :
-        if this._graph_html is None : this._graph_html = Pio.to_html(this.getBarGraph(), full_html= False)
-        return this._graph_html
+        if this._bar_graph_json is None :
+            this._bar_graph_json = to_json( bar ( {
+                    "Sentiments" : ["Positive" , "Neutral" , "Negative"],
+                    "Count" : [this._positive_tweets , this._neutral_tweets , this._negative_tweets]}, 
+                    x = "Sentiments" , y = "Count", title= f"Analysis for '{this._brand}'\nin the last 7 days.",
+                    color_discrete_sequence= ["#20A6DF"]
+                ) )
+        return this._bar_graph_json
 
 
 GRAPH_DICT_OF_ALL__ : dict[str : XGraph] = {
@@ -59,10 +56,11 @@ def generateTogetherGraph() :
         negative_counts.append(graph_obj._negative_tweets)
 
     global GRAPH_TOGETHER_OF_ALL_BRANDS__
-    GRAPH_TOGETHER_OF_ALL_BRANDS__ = Pio.to_html( Px.bar({
+    GRAPH_TOGETHER_OF_ALL_BRANDS__ = to_html( bar ( {
         "Brands": brands * 3,
         "Sentiments": ["Positive"] * len(brands) + ["Neutral"] * len(brands) + ["Negative"] * len(brands),
         "Count": positive_counts + neutral_counts + negative_counts
-    }, x="Brands", y="Count", color="Sentiments", barmode="group", title= "Sentiment Analysis of tweets for all brands in last 7 days."), full_html= False)
+    }, x="Brands", y="Count", color="Sentiments", barmode="group", title= "Analysis for all brands in last 7 days."
+     , color_discrete_sequence= ["#00cc96" , "#636efa" , "#ef553b"] ), full_html= False)
 
 generateTogetherGraph()
