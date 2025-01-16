@@ -25,7 +25,7 @@
 flask run --host 0.0.0.0
 ```
 **5.** Now the terminal wil display a URL like this: ```Running on http://192.168.X.XXX:5000```, access that URL through your browser and surf your website. 
-<u> *Also, if you want to view your site on other devices through the above URL, then those other devices must be connected to the same network and their system must specify the network as private.* </u>
+<ins> *Also, if you want to view your site on other devices through the above URL, then those other devices must be connected to the same network and their system must specify the network as private.* </ins>
 
 ---
 ## 🗄**File Structure**
