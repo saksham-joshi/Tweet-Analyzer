@@ -1,3 +1,5 @@
+> ## UNDER DEVELOPMENT
+
 # Tweet-Analyzer
 #### A Real time, optimized and user friendly model to analyze sentiment of tweets made for the brands by the users of X (Twitter).
 
@@ -22,7 +24,7 @@
 ```bash
 flask run --host 0.0.0.0
 ```
-**5.** Now the terminal wil display a URL like this: ```Running on http://192.168.X.XXX:5000```, access that URL through your browser and access your website.
+**5.** Now the terminal wil display a URL like this: ```Running on http://192.168.X.XXX:5000```, access that URL through your browser and surf your website.
 
 ---
 ## 🗄**File Structure**
