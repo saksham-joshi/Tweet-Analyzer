@@ -1,19 +1,4 @@
-from flask import Flask, render_template ,  jsonify
-from flask_cors import CORS
-from flask_socketio import SocketIO
-from typing import Final
-from Tweet_Visualizer.graph import *
-
-TWEET_APP__ = Flask(__name__)
-TWEET_SOCKET__ = SocketIO(TWEET_APP__)
-
-CORS(TWEET_APP__)
-
-TOTAL_WEBSITE_VISITORS__ : int = 0
-TOTAL_DATA_FETCHES__ : int = 0
-
-URL_TO_COMPANY_DATA_NOT_AVAILABLE_IMAGE : Final = "https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/img/sorry_image.png"
-
+from Tweet_Visualizer.cache import *
 
 @TWEET_APP__.route('/')
 def getIndexHtml() : 
@@ -22,34 +7,36 @@ def getIndexHtml() :
     TOTAL_WEBSITE_VISITORS__ += 1
     TOTAL_DATA_FETCHES__ +=1
 
-    return render_template("index.html", total_website_visitors= TOTAL_WEBSITE_VISITORS__, total_data_fetches= TOTAL_DATA_FETCHES__, graph_figure= GRAPH_TOGETHER_OF_ALL_BRANDS__ )
+    return INDEX_TEMPLATE__
 
 
 # function to display graphs of particulars companies
-@TWEET_APP__.route('/company/<__company_name>', methods= ['GET'])
+@TWEET_APP__.route('/get-graph/<__company_name>', methods= ['GET'])
 def getGraphOfCompany(__company_name : str) : 
-    global TOTAL_DATA_FETCHES__
 
-    TOTAL_DATA_FETCHES__ += 1
+    incrementTotalDataFetches()
 
-    graph_to_transmit = GRAPH_DICT_OF_ALL__.get(__company_name, None)
+    graph_to_transmit : XGraph = GRAPH_DICT_OF_ALL__.get(__company_name, None)
 
-    if graph_to_transmit is None : 
-        return jsonify( {
-            "response_status" : 400,
-            "url" : URL_TO_COMPANY_DATA_NOT_AVAILABLE_IMAGE
-        } )
+    if graph_to_transmit is None : return COMPANY_DATA_NOT_PROVIDED_BY_US
 
-    return jsonify({
-        "response_status" : 200,
-        "graph" : graph_to_transmit.getBarGraph()
-    })
+    return graph_to_transmit.getJsonifiedGraphResponse()
+
+
+
+@TWEET_APP__.route('/get-data/<__company_name>' , methods= ['GET'])
+def getJsonData(__company_name) :
+
+    incrementTotalDataFetches()
+
+    xgraph_obj : XGraph = GRAPH_DICT_OF_ALL__.get(__company_name, None)
+
+    if xgraph_obj is None : return COMPANY_DATA_NOT_PROVIDED_BY_US
+        
+    return xgraph_obj.getJsonifiedDataResponse()
+
 
 
 @TWEET_APP__.errorhandler(404)
 def handleError404(__error) :
-    return jsonify( {
-        "error" : "not found",
-        "code" : 404,
-        "message" : "Your requests is invalid. Visit 'https://github.com/saksham-joshi/Tweet-Analyzer' to learn more!"
-    } )
+    return RESPONSE_TO_404
