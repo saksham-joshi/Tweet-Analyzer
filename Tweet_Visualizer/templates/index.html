@@ -55,37 +55,40 @@
     <script async src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
 	<script>
 
-		function showErrorImage() {
-			document.querySelector('#bar-graph').innerHTML = `<img src='https://cdn.delivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/img/sorry_image.png' alt="Data Not Available!!">`
-		}
 		function updateGraph(__brand_name)
 		{
 			var bar_graph_area = document.querySelector("#bar-graph");
 
 			bar_graph_area.innerHTML = `Fetching data for '${__brand_name}'...`;
 
-			fetch(`/company/${__brand_name}`, {method : 'GET'})
+			fetch(`/get-graph/${__brand_name}`, {method : 'GET'})
+
 			               .then(response => {
 								if(!response.ok){
-									console.error("An unknown error occurred! Something wrong with the response!");
-									bar_graph_area.innerHTML = `An unknown error occurred!\nSomething wrong with the response!`;
+									throw new Error("Something went wrong with the response!");
 								}
 								return response.json();
 						   } )
+
 						   .then(jsondata => {
-								if(jsondata["response_status"] === 200){
+
+							    const {response_status , graph} = jsondata;
+
+								if(response_status === 200){
 									bar_graph_area.innerHTML = "";
-									jsondata = JSON.parse(jsondata["graph"]);
-									Plotly.newPlot("bar-graph", jsondata.data, jsondata.layout);
+									parsed_graph = JSON.parse(graph);
+									Plotly.newPlot("bar-graph" , parsed_graph.data , parsed_graph.layout);
 								}
 								else{
-									bar_graph_area.innerHTML = "We do not provide data for\nthe company you requested!";
+									bar_graph_area.innerHTML = `We do not provide data for ${__brand_name}.`;
 								}
 						   } )
+
 						   .catch(error => {
 							   console.error("An unknown error occurred : " + error)
 							   bar_graph_area.innerHTML = "An unknown error occurred :\n" + error;							   
-						   } );
+							} 
+			);
 		}
 	</script>
 </head>
