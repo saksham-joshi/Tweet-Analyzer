@@ -55,20 +55,50 @@
     <script async src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
 	<script>
 
-		function getGraphArea() {
+		async function requestGetJson(__request, __error_handler = function (__error) { 
+			console.error("An Unknown error occurred: " + __error); 
+		}) {
+			try {
+				const response = await fetch(__request, { method: 'GET' });
+				if (!response.ok) {
+					throw new Error("The response of the request is not OK!");
+				}
+				const jsondata = await response.json();
+				return jsondata; // Return the fetched JSON data
+			} catch (error) {
+				__error_handler(error);
+				return null; // Return null in case of an error
+			}
+		}
+
+
+		function getGraphArea ( ) {
 			return document.querySelector("#bar-graph");
 		}
 
-		function renderGraphOfAll()
+		async function updateSiteStats ( ) {
+			var jsondata = await requestGetJson('/get-site-stats', (error) => { console.error("An unknown error occured: " + error ) });
+			
+			if ( jsondata != null) {
+			    document.querySelector("#total-website-visitors").innerHTML = jsondata["total-site-visits"];
+			   	document.querySelector("#total-data-fetches").innerHTML = jsondata["total-site-visits"];
+			}
+		}
+		setInterval(updateSiteStats, 60000)
+
+		async function renderGraphOfAll()
 		{
-			getGraphArea.innerHTML = "Fetching graph of all brands together ...";
-			fetch('/get-graph-of-all' , {method : 'GET'})
-			.then(response => { 
-				if(!response.ok) throw new Error("Something went wrong while rendering the graph!");
-				return response.json();
-			})
-			.then(jsondata => { jsondata = JSON.parse(jsondata) ; Plotly.newPlot( "bar-graph" , jsondata.data , jsondata.layout ) } )
-			.catch(error => { getGraphArea.innerHTML = "An unknown error occured :<br>" + error})
+			var graph_area = getGraphArea();
+
+			graph_area.innerHTML = "Fetching graph of all brands together ...";
+
+			var jsondata = await requestGetJson('/get-graph-of-all' , function(__error){ { getGraphArea().innerHTML = "An unknown error occured :<br>" + __error} } );
+			
+			if ( jsondata != null) {
+				graph_area.innerHTML = "";
+				jsondata = JSON.parse ( jsondata ) ;
+				Plotly.newPlot( "bar-graph" , jsondata.data , jsondata.layout ) ;
+			}
 		}
 
 		function updateGraph(__brand_name)
@@ -107,7 +137,7 @@
 		}
 
 		window.onload = renderGraphOfAll;
-		
+
 	</script>
 </head>
 <body>
