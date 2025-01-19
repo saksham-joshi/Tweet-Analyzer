@@ -5,7 +5,6 @@ def getIndexHtml() :
     global TOTAL_WEBSITE_VISITORS__ , TOTAL_DATA_FETCHES__
 
     TOTAL_WEBSITE_VISITORS__ += 1
-    TOTAL_DATA_FETCHES__ +=1
 
     return INDEX_TEMPLATE__
 
@@ -35,6 +34,11 @@ def getJsonData(__company_name) :
         
     return xgraph_obj.getJsonifiedDataResponse()
 
+
+@TWEET_APP__.route('/get-graph-of-all')
+def getGraphOfAll() :
+    incrementTotalDataFetches()
+    return GRAPH_TOGETHER_OF_ALL_BRANDS__
 
 
 @TWEET_APP__.errorhandler(404)
