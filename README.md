@@ -53,7 +53,6 @@ flask run --host 0.0.0.0
     |-- Tweet_Sentiment
     |     |
     |     |-- __init__.py
-    |     |-- analyzer.py
     |
     |-- Tweet_Visualizer
     |     |
@@ -97,7 +96,8 @@ flask run --host 0.0.0.0
     |     |
     |     |-- __init__.py
     |     |-- base.py
-    |     |-- cache.cpy
+    |     |-- cache.py
+    |     |-- util.py
     |
     |-- .gitattributes
     |-- .gitignore
