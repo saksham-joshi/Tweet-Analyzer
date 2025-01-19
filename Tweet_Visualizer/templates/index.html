@@ -50,46 +50,64 @@
 	<link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/assets/mobirise/css/mbr-additional.css"
 		type="text/css">
-	<script async src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
-	<script async src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- <script async src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+	<script async src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script async src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
 	<script>
 
+		function getGraphArea() {
+			return document.querySelector("#bar-graph");
+		}
+
+		function renderGraphOfAll()
+		{
+			getGraphArea.innerHTML = "Fetching graph of all brands together ...";
+			fetch('/get-graph-of-all' , {method : 'GET'})
+			.then(response => { 
+				if(!response.ok) throw new Error("Something went wrong while rendering the graph!");
+				return response.json();
+			})
+			.then(jsondata => { jsondata = JSON.parse(jsondata) ; Plotly.newPlot( "bar-graph" , jsondata.data , jsondata.layout ) } )
+			.catch(error => { getGraphArea.innerHTML = "An unknown error occured :<br>" + error})
+		}
+
 		function updateGraph(__brand_name)
 		{
-			var bar_graph_area = document.querySelector("#bar-graph");
+			var bar_graph_area = getGraphArea();
 
 			bar_graph_area.innerHTML = `Fetching data for '${__brand_name}'...`;
 
 			fetch(`/get-graph/${__brand_name}`, {method : 'GET'})
 
-			               .then(response => {
-								if(!response.ok){
-									throw new Error("Something went wrong with the response!");
-								}
-								return response.json();
-						   } )
+			    .then(response => {
+					if(!response.ok){
+						throw new Error("Something went wrong with the response!");
+					}
+					return response.json();
+			   } )
 
-						   .then(jsondata => {
+			   .then(jsondata => {
 
-							    const {response_status , graph} = jsondata;
+				    const {response_status , graph} = jsondata;
 
-								if(response_status === 200){
-									bar_graph_area.innerHTML = "";
-									parsed_graph = JSON.parse(graph);
-									Plotly.newPlot("bar-graph" , parsed_graph.data , parsed_graph.layout);
-								}
-								else{
-									bar_graph_area.innerHTML = `We do not provide data for ${__brand_name}.`;
-								}
-						   } )
+					if(response_status === 200){
+						bar_graph_area.innerHTML = "";
+						parsed_graph = JSON.parse(graph);
+						Plotly.newPlot("bar-graph" , parsed_graph.data , parsed_graph.layout);
+					}
+					else{
+						bar_graph_area.innerHTML = `We do not provide data for ${__brand_name}.`;
+					}
+			   } )
 
-						   .catch(error => {
-							   console.error("An unknown error occurred : " + error)
-							   bar_graph_area.innerHTML = "An unknown error occurred :\n" + error;							   
-							} 
+				.catch(error => {
+				    bar_graph_area.innerHTML = "An unknown error occurred :<br>" + error;							   
+				} 
 			);
 		}
+
+		window.onload = renderGraphOfAll;
+		
 	</script>
 </head>
 <body>
@@ -133,7 +151,7 @@
 						tweets made for the brands by the users of X.</p>
 				</div>
 			</div>
-			<div class="row mt-5 justify-content-center"> </div>
+			<!-- <div class="row mt-5 justify-content-center"> </div> -->
 		</div>
 	</section>
 	<section data-bs-version="5.1" class="features4 cid-tMlEXTHLbS" id="features04-w">
@@ -142,7 +160,7 @@
 				<div class="col-12 content-head">
 					<div class="mbr-section-head mb-5">
 						<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-							<div id="bar-graph" class="js-plotly-plot"> {{graph_figure | safe}} </div>
+							<div onload="renderGraphOfAll()" id="bar-graph" class="js-plotly-plot">  </div>
 						</h4>
 					</div>
 				</div>
@@ -154,6 +172,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-7">
 					<div class="mbr-section-btn align-center">
+						<button onclick="renderGraphOfAll()"       class="btn btn-primary-outline display-4" href="">ALL</button>
 						<button onclick="updateGraph('amazon')"    class="btn btn-primary-outline display-4" href="">Amazon</button> 
 						<button onclick="updateGraph('apple')"     class="btn btn-primary-outline display-4" href="">Apple</button>
 						<button onclick="updateGraph('google')"    class="btn btn-primary-outline display-4" href="">Google</button>
