@@ -24,7 +24,7 @@ from Tweet_Visualizer.util import *
         
 with CONTEXT_APP :
 
-        INDEX_TEMPLATE__ = generateIndexHtmlTemplate()
+        INDEX_TEMPLATE__ = render_template("index.html")
 
         GRAPH_TOGETHER_OF_ALL_BRANDS__ = generateTogetherGraph()
 
