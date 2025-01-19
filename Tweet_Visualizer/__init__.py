@@ -41,6 +41,16 @@ def getGraphOfAll() :
     return GRAPH_TOGETHER_OF_ALL_BRANDS__
 
 
+
+@TWEET_APP__.route('/get-site-stats')
+def getSiteStats() :
+    return jsonify ( {
+        "total-data-fetches" : TOTAL_DATA_FETCHES__,
+        "total-site-visits" : TOTAL_WEBSITE_VISITORS__
+    } ) , 200
+
+
+
 @TWEET_APP__.errorhandler(404)
 def handleError404(__error) :
     return RESPONSE_TO_404
