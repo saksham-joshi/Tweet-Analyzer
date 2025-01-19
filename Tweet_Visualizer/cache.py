@@ -1,29 +1,41 @@
-from Tweet_Visualizer.base import *
+from Tweet_Visualizer.util import *
 
-# store the rendered template of main html page
-INDEX_TEMPLATE__ = None
-
-# stores the dictionary to response for 404 error
-RESPONSE_TO_404 = None
-
-# if we do not provide data for a certain company then this response is used
-COMPANY_DATA_NOT_PROVIDED_BY_US = None
-
-# generating cache ...
-with TWEET_APP__.app_context() :
-
-    INDEX_TEMPLATE__ = render_template("index.html" , total_website_visitors= TOTAL_WEBSITE_VISITORS__ , total_data_fetches= TOTAL_DATA_FETCHES__ , graph_figure= GRAPH_TOGETHER_OF_ALL_BRANDS__ )
-
-    RESPONSE_TO_404 = jsonify( {
-        "error" : "data not found",
-        "response-status" : 404,
-        "message" : "Your request is invalid. Visit 'https://github.com/saksham-joshi/Tweet-Analyzer' to learn more!"
-    } ) , 404
-
-    # if we do not provide data for a certain company then this response is used
-    COMPANY_DATA_NOT_PROVIDED_BY_US = jsonify({
-                "response_status" : 404,
-                "message" : f"We do not provide data for the given company."
-            } ), 404
+# def setupTweetVisualizer() :
     
-    
+#     # generating cache ...
+#     with CONTEXT_APP:
+#         global INDEX_TEMPLATE__ , RESPONSE_TO_404 , COMPANY_DATA_NOT_PROVIDED_BY_US , GRAPH_TOGETHER_OF_ALL_BRANDS__
+#         print(">>>>>>>>>>>> Setting Visualizer ...")
+#         INDEX_TEMPLATE__ = generateIndexHtmlTemplate()
+
+#         GRAPH_TOGETHER_OF_ALL_BRANDS__ = generateTogetherGraph()
+
+#         RESPONSE_TO_404 = jsonify( {
+#             "error" : "data not found",
+#             "response-status" : 404,
+#             "message" : "Your request is invalid. Visit 'https://github.com/saksham-joshi/Tweet-Analyzer' to learn more!"
+#         } ) , 404
+
+#         # if we do not provide data for a certain company then this response is used
+#         COMPANY_DATA_NOT_PROVIDED_BY_US = jsonify({
+#                     "response_status" : 404,
+#                     "message" : f"We do not provide data for the given company."
+#                 } ), 404
+        
+with CONTEXT_APP :
+
+        INDEX_TEMPLATE__ = generateIndexHtmlTemplate()
+
+        GRAPH_TOGETHER_OF_ALL_BRANDS__ = generateTogetherGraph()
+
+        RESPONSE_TO_404 = jsonify( {
+            "error" : "data not found",
+            "response-status" : 404,
+            "message" : "Your request is invalid. Visit 'https://github.com/saksham-joshi/Tweet-Analyzer' to learn more!"
+        } ) , 404
+
+        # if we do not provide data for a certain company then this response is used
+        COMPANY_DATA_NOT_PROVIDED_BY_US = jsonify({
+                    "response_status" : 404,
+                    "message" : f"We do not provide data for the given company."
+                } ), 404        
