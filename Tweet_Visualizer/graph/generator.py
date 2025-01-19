@@ -94,9 +94,8 @@ def generateTogetherGraph() :
 
         negative_counts.append(graph_obj._negative_tweets)
 
-    global GRAPH_TOGETHER_OF_ALL_BRANDS__
 
-    GRAPH_TOGETHER_OF_ALL_BRANDS__ = to_html( bar ( {
+    return jsonify ( to_json ( bar ( {
 
         "Brands": brands * 3,
         
@@ -106,6 +105,4 @@ def generateTogetherGraph() :
     
     }, x="Brands", y="Count", color="Sentiments", barmode="group", title= "Analysis for all brands in last 7 days."
      
-     , color_discrete_sequence= ["#00cc96" , "#636efa" , "#ef553b"] ), full_html= False)
-
-generateTogetherGraph()
+     , color_discrete_sequence= ["#00cc96" , "#636efa" , "#ef553b"] ) ) ) , 200
