@@ -84,7 +84,6 @@
 			   	document.querySelector("#total-data-fetches").innerHTML = jsondata["total-site-visits"];
 			}
 		}
-		setInterval(updateSiteStats, 60000)
 
 		async function renderGraphOfAll()
 		{
@@ -136,7 +135,13 @@
 			);
 		}
 
-		window.onload = renderGraphOfAll;
+		async function performInitialRendering ( ) {
+			await renderGraphOfAll ( );
+			await updateSiteStats ( );
+		} 
+
+		window.onload = performInitialRendering;
+		setInterval(updateSiteStats, 60000);
 
 	</script>
 </head>
@@ -272,7 +277,7 @@
 							<div class="iconfont-wrapper mb-3"> <span class="mbr-iconfont fas fa-people-group"></span>
 							</div>
 							<h5 class="card-title mbr-fonts-style display-5"><strong><span style="font-weight: bold;"
-										id="total-website-visitors"> {{total_website_visitors | safe}}</span></strong>
+										id="total-website-visitors"></span></strong>
 							</h5>
 							<p class="card-text mbr-fonts-style mb-3 display-7"><strong> Total website visitors</strong>
 							</p>
@@ -285,7 +290,7 @@
 							<div class="iconfont-wrapper mb-3"> <span
 									class="mbr-iconfont fas fa-arrows-down-to-line"></span> </div>
 							<h5 class="card-title mbr-fonts-style display-5"><strong><span style="font-weight: bold;"
-										id="total-data-fetches">{{total_data_fetches | safe}}</span></strong></h5>
+										id="total-data-fetches"></span></strong></h5>
 							<p class="card-text mbr-fonts-style mb-3 display-7"><strong> Total data fetches</strong></p>
 						</div>
 					</div>
