@@ -2,9 +2,7 @@ from Tweet_Extractor.setup import *
 
 
 def setupTweetExtractor() -> None :
-    loadAuthenticationData()
-    authenticateX()
-    loadExtractorArgs()
+    pass
 
 
 class XExtractor :
@@ -13,6 +11,6 @@ class XExtractor :
         this._brandname = "#" + __brand_name
         this._query = XExtractor.prepareQuery(__brand_name)
 
-    @staticmethod
-    def prepareQuery(__brand_name : str) -> str : 
-        return f"#{__brand_name} {"-filter:retweets" if FILTER_RETWEETS__ else ""}"
+    # @staticmethod
+    # def prepareQuery(__brand_name : str) -> str : 
+    #     return f"#{__brand_name} {("-filter:retweets" if FILTER_RETWEETS__ else "")}"
