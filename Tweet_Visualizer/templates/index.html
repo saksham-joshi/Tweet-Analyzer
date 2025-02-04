@@ -57,17 +57,18 @@
 
 		async function requestGetJson(__request, __error_handler = function (__error) { 
 			console.error("An Unknown error occurred: " + __error); 
-		}) {
+		    } ) 
+		{
 			try {
 				const response = await fetch(__request, { method: 'GET' });
 				if (!response.ok) {
 					throw new Error("The response of the request is not OK!");
 				}
 				const jsondata = await response.json();
-				return jsondata; // Return the fetched JSON data
+				return jsondata;
 			} catch (error) {
 				__error_handler(error);
-				return null; // Return null in case of an error
+				return null; 
 			}
 		}
 
@@ -81,7 +82,7 @@
 			
 			if ( jsondata != null) {
 			    document.querySelector("#total-website-visitors").innerHTML = jsondata["total-site-visits"];
-			   	document.querySelector("#total-data-fetches").innerHTML = jsondata["total-site-visits"];
+			   	document.querySelector("#total-data-fetches").innerHTML = jsondata["total-data-fetches"];
 			}
 		}
 
@@ -141,7 +142,7 @@
 		} 
 
 		window.onload = performInitialRendering;
-		setInterval(updateSiteStats, 60000);
+		setInterval(updateSiteStats , 60000);
 
 	</script>
 </head>
