@@ -9,8 +9,8 @@ CORS(TWEET_APP__)
 
 CONTEXT_APP = TWEET_APP__.app_context()
 
-TOTAL_WEBSITE_VISITORS__ : int = 1
-TOTAL_DATA_FETCHES__ : int = 1
+TOTAL_WEBSITE_VISITORS__ : int = 0
+TOTAL_DATA_FETCHES__ : int = 0
 
 URL_TO_COMPANY_DATA_NOT_AVAILABLE_IMAGE : Final = "https://cdn.jsdelivr.net/gh/saksham-joshi/Tweet-Analyzer@main/Tweet_Visualizer/static/img/sorry_image.png"
     
