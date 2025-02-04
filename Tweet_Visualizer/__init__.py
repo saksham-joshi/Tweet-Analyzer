@@ -1,8 +1,9 @@
 from Tweet_Visualizer.cache import *
 
 @TWEET_APP__.route('/')
-def getIndexHtml() : 
-    global TOTAL_WEBSITE_VISITORS__ , TOTAL_DATA_FETCHES__
+def getIndexHtml() :
+
+    global TOTAL_WEBSITE_VISITORS__
 
     TOTAL_WEBSITE_VISITORS__ += 1
 
@@ -13,7 +14,9 @@ def getIndexHtml() :
 @TWEET_APP__.route('/get-graph/<__company_name>', methods= ['GET'])
 def getGraphOfCompany(__company_name : str) : 
 
-    incrementTotalDataFetches()
+    global TOTAL_DATA_FETCHES__
+
+    TOTAL_DATA_FETCHES__ += 1
 
     graph_to_transmit : XGraph = GRAPH_DICT_OF_ALL__.get(__company_name, None)
 
@@ -26,7 +29,9 @@ def getGraphOfCompany(__company_name : str) :
 @TWEET_APP__.route('/get-data/<__company_name>' , methods= ['GET'])
 def getJsonData(__company_name) :
 
-    incrementTotalDataFetches()
+    global TOTAL_DATA_FETCHES__
+
+    TOTAL_DATA_FETCHES__ += 1
 
     xgraph_obj : XGraph = GRAPH_DICT_OF_ALL__.get(__company_name, None)
 
@@ -37,20 +42,29 @@ def getJsonData(__company_name) :
 
 @TWEET_APP__.route('/get-graph-of-all')
 def getGraphOfAll() :
-    incrementTotalDataFetches()
+
+    global TOTAL_DATA_FETCHES__
+
+    TOTAL_DATA_FETCHES__ += 1
+
     return GRAPH_TOGETHER_OF_ALL_BRANDS__
 
 
 
 @TWEET_APP__.route('/get-site-stats')
 def getSiteStats() :
+
+    global TOTAL_DATA_FETCHES__ , TOTAL_WEBSITE_VISITORS__
+
     return jsonify ( {
+
+        "total-site-visits" : TOTAL_WEBSITE_VISITORS__ ,
+
         "total-data-fetches" : TOTAL_DATA_FETCHES__,
-        "total-site-visits" : TOTAL_WEBSITE_VISITORS__
+        
     } ) , 200
 
 
 
 @TWEET_APP__.errorhandler(404)
-def handleError404(__error) :
-    return RESPONSE_TO_404
+def handleError404(__error) : return RESPONSE_TO_404
