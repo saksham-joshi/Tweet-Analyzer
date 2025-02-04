@@ -28,14 +28,14 @@ with CONTEXT_APP :
 
         GRAPH_TOGETHER_OF_ALL_BRANDS__ = generateTogetherGraph()
 
-        RESPONSE_TO_404 = jsonify( {
+        RESPONSE_TO_404 : Final = jsonify( {
             "error" : "data not found",
             "response-status" : 404,
             "message" : "Your request is invalid. Visit 'https://github.com/saksham-joshi/Tweet-Analyzer' to learn more!"
         } ) , 404
 
         # if we do not provide data for a certain company then this response is used
-        COMPANY_DATA_NOT_PROVIDED_BY_US = jsonify({
+        COMPANY_DATA_NOT_PROVIDED_BY_US : Final = jsonify({
                     "response_status" : 404,
                     "message" : f"We do not provide data for the given company."
                 } ), 404        
