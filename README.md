@@ -1,7 +1,8 @@
 > ## UNDER DEVELOPMENT
 
+
 # Tweet-Analyzer
-#### A Real time, optimized and user friendly model to analyze sentiment of tweets made for the brands by the users of X (Twitter).
+#### A Real time, optimized and user friendly model to analyze sentiment of tweets made for the brands on X (Twitter).
 
 <div align="center">
     <img width="300" src="./Tweet_Visualizer/static/assets/rounded-corner-logo.png" alt="Logo" >
@@ -22,10 +23,10 @@
 
 **4.** If setup.py is successful, execute the below command on the terminal:
 ```bash
-flask run --host 0.0.0.0
+python app.py
 ```
-**5.** Now the terminal wil display a URL like this: ```Running on http://192.168.X.XXX:5000```, access that URL through your browser and surf your website. 
-<ins> *Also, if you want to view your site on other devices through the above URL, then those other devices must be connected to the same network and their system must specify the network as private.* </ins>
+**5.** Now the terminal wil display a URL like this: ```Running on http://192.168.X.XXX:5000```, access that URL through your browser and surf your website.
+<i> <b> *Also, if you want to view your site on other devices through the above URL, then those other devices must be connected to the same network and their system must specify the network as private.* <b> </i>
 
 ---
 ## 🗄**File Structure**
@@ -40,6 +41,10 @@ flask run --host 0.0.0.0
     |     |     |     |
     |     |     |     |-- auth.json
     |     |     |     |-- args.json
+    |     |     |
+    |     |     |-- tweety
+    |     |     |     |
+    |     |     |     |-- (view from github.com/mahrtayyab/tweety)
     |     |     |
     |     |     |-- __init__.py
     |     |     |-- auth_keys.py
@@ -70,17 +75,103 @@ flask run --host 0.0.0.0
     |     |     |-- assets
     |     |     |     |
     |     |     |     |-- animatecss
+    |     |     |     |     |
+    |     |     |     |     |-- animate.css
+    |     |     |     |
     |     |     |     |-- bootstrap
+    |     |     |     |     |
+    |     |     |     |     |-- css
+    |     |     |     |     |     |
+    |     |     |     |     |     |-- bootstrap-grid.min.css
+    |     |     |     |     |     |-- bootstrap-reboot.min.css
+    |     |     |     |     |     |-- bootstrap-min.css
+    |     |     |     |     |
+    |     |     |     |     |-- js
+    |     |     |     |           |
+    |     |     |     |           |-- bootstrap.bundle.min.js
+    |     |     |     |     
     |     |     |     |-- css
+    |     |     |     |     |
+    |     |     |     |     |-- fontawesome.min.css
+    |     |     |     |
     |     |     |     |-- dropdown
+    |     |     |     |     |
+    |     |     |     |     |-- css
+    |     |     |     |     |     |-- style.css
+    |     |     |     |     |
+    |     |     |     |     |-- js
+    |     |     |     |           |
+    |     |     |     |           |-- navbar-dropdown.js
+    |     |     |     |     
     |     |     |     |-- font-awesome-solid
+    |     |     |     |     |
+    |     |     |     |     |-- css
+    |     |     |     |     |     |
+    |     |     |     |     |     |-- solid.min.css
+    |     |     |     |     | 
+    |     |     |     |     |-- fonts
+    |     |     |     |           |
+    |     |     |     |           |-- fa-solid-900.ttf
+    |     |     |     |           |-- fa-solid-900.woff2
+    |     |     |     |     
     |     |     |     |-- images
-    |     |     |     |-- mobirise
+    |     |     |     |     |
+    |     |     |     |     |-- webp + png files ...
+    |     |     |     |     
+    |     |     |     |-- mobirise\css
+    |     |     |     |     |
+    |     |     |     |     |-- fontawesome.min.css
+    |     |     |     |     |-- mbr-additional.css
+    |     |     |     |
     |     |     |     |-- smoothscroll
+    |     |     |     |     |
+    |     |     |     |     |-- smooth-scroll.js
+    |     |     |     |  
     |     |     |     |-- socicon
+    |     |     |     |     |
+    |     |     |     |     |-- css
+    |     |     |     |     |     |
+    |     |     |     |     |     |-- style.css
+    |     |     |     |     |
+    |     |     |     |     |-- fonts
+    |     |     |     |           |
+    |     |     |     |           |-- socicon.eot
+    |     |     |     |           |-- socicon.svg
+    |     |     |     |           |-- socicon.ttf
+    |     |     |     |           |-- socicon.woff
+    |     |     |     |           |-- socicon-woff2
     |     |     |     |-- theme
-    |     |     |     |-- web
+    |     |     |     |     |
+    |     |     |     |     |-- css
+    |     |     |     |     |     |
+    |     |     |     |     |     |-- style.css
+    |     |     |     |     |
+    |     |     |     |     |-- js
+    |     |     |     |           |
+    |     |     |     |           |-- script.js
+    |     |     |     |     
+    |     |     |     |-- web\assets
+    |     |     |     |     |
+    |     |     |     |     |-- mobirise-icons-bold
+    |     |     |     |     |     |
+    |     |     |     |     |     |-- mobirise-icons-bold.css
+    |     |     |     |     |     |-- mobirise-icons-bold.eot
+    |     |     |     |     |     |-- mobirise-icons-bold.svg
+    |     |     |     |     |     |-- mobirise-icons-bold.ttf
+    |     |     |     |     |     |-- mobirise-icons-bold.woff
+    |     |     |     |     |
+    |     |     |     |     |-- mobirise-icons2
+    |     |     |     |           |
+    |     |     |     |           |-- mobirise2.css
+    |     |     |     |           |-- mobirise2.eot
+    |     |     |     |           |-- mobirise2.svg
+    |     |     |     |           |-- mobirise2.ttf
+    |     |     |     |           |-- mobirise2.woff
+    |     |     |     |     
     |     |     |     |-- ytplayer
+    |     |     |     |     |
+    |     |     |     |     |-- index.js
+    |     |     |     |       
     |     |     |     |-- circular-logo.png
     |     |     |     |-- rounded-corner-logo.png
     |     |     |     |-- square-logo.png
@@ -120,6 +211,11 @@ flask run --host 0.0.0.0
 - **Global Variables (constant)** : ```UPPERCASE SEPERATED BY '_'.```
 - **Global Variables (non-constant)** : ```UPPERCASE trailing by '__'.```
 - **Json keys**: ```lowercase separated by hyphen(-)```
+---
+
+## 💳**Credit**
+#### This Project uses <a href="https://github.com/mahrtayyab/tweety/"> Tweet-ns </a> by <a href="https://github.com/mahrtayyab"> @Mahrtayyab </a> to extract tweets from X (Twitter) and I don't claim its ownership and authenticity.
+
 ---
 
 ## 🔗 Developer Links
