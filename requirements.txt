@@ -1,6 +1,6 @@
-textblob==0.18.0.post0;
-flask==3.0.3;
-flask_cors==5.0.0;
-plotly==5.24.1;
-tweety-ns==2.1;
-pandas==2.2.3;
+textblob>=0.18.0.post0;
+flask>=3.1.1;
+flask_cors>=6.0.0;
+plotly>=5.24.1;
+tweety-ns>=2.1;
+pandas>=2.2.3;
